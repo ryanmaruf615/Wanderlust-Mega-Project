@@ -28,3 +28,17 @@ spec:
         - name: mongo-storage
           persistentVolumeClaim:
             claimName: mongo-pvc
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo-service
+  namespace: wanderlust
+spec:
+  selector:
+    app: mongo
+  ports:
+    - port: 27017
+      targetPort: 27017
+      protocol: TCP
